@@ -28,17 +28,20 @@
    
 3. **إعدادات البناء** ⚠️ مهم جداً
    ```
-   Framework preset: Next.js
-   Build command: npm install && npm run build
+   Framework preset: Next.js (Static)
+   Build command: npm run build
    Build output directory: .next
-   Root directory: /
+   Root directory: (leave empty)
    ```
 
 4. **متغيرات البيئة المطلوبة:**
    في قسم "Environment variables" أضف:
    ```
-   NODE_VERSION = 18.17.0
+   NODE_VERSION = 20.18.0
+   NPM_FLAGS = --legacy-peer-deps
    ```
+   
+   ⚠️ **مهم**: تأكد من أن Build command هو `npm run build` وليس `pnpm run build`
 
 5. **إضافة باقي متغيرات البيئة**
    - في لوحة تحكم Cloudflare Pages
