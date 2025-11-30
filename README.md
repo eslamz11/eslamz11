@@ -35,7 +35,7 @@ A professional portfolio template built and customized for **Eslam Zayed**, usin
 ## Demo :movie_camera:
 
 <p align="center">
-  <img src="./public/image/screen.png" alt="Portfolio Screenshot" width="100%">
+  <img src="https://i.ibb.co/TBBCNvxT/Screenshot-2025-11-30-163802.png" alt="Portfolio Screenshot" width="100%">
 </p>
 
 <p align="center">
