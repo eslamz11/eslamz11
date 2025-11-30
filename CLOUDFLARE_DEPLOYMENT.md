@@ -26,25 +26,36 @@
    - اختر "Pages" ثم "Connect to Git"
    - اختر مستودع GitHub الخاص بك
    
-3. **إعدادات البناء**
+3. **إعدادات البناء** ⚠️ مهم جداً
    ```
-   Build command: npm run build
-   Build output directory: .vercel/output/static
+   Framework preset: Next.js
+   Build command: npm install && npm run build
+   Build output directory: .next
    Root directory: /
-   Environment variables:
-   - NODE_VERSION: 18
    ```
 
-4. **إضافة متغيرات البيئة**
+4. **متغيرات البيئة المطلوبة:**
+   في قسم "Environment variables" أضف:
+   ```
+   NODE_VERSION = 18.17.0
+   ```
+
+5. **إضافة باقي متغيرات البيئة**
    - في لوحة تحكم Cloudflare Pages
    - اذهب إلى Settings > Environment variables
-   - أضف جميع المتغيرات من ملف `.env.example`:
+   - أضف جميع المتغيرات (راجع ملف `ENV_VARIABLES.md`):
      - `NEXT_PUBLIC_FIREBASE_API_KEY`
      - `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
      - `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
      - `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
      - `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
      - `NEXT_PUBLIC_FIREBASE_APP_ID`
+     - `EMAIL_ADDRESS` (لإرسال الإيميلات)
+     - `GMAIL_PASSKEY` (App Password من Gmail)
+     - `TELEGRAM_BOT_TOKEN` (اختياري)
+     - `TELEGRAM_CHAT_ID` (اختياري)
+     - `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` (اختياري)
+     - `NEXT_PUBLIC_RECAPTCHA_SECRET_KEY` (اختياري)
      - وأي متغيرات أخرى مطلوبة
 
 ### الطريقة 2: النشر المباشر عبر Wrangler CLI
