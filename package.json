@@ -7,7 +7,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:deploy": "npm run pages:build && wrangler pages deploy",
+    "pages:watch": "npx @cloudflare/next-on-pages --watch",
+    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.1",
@@ -26,12 +30,15 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.5",
     "@tailwindcss/postcss": "^4.1.16",
     "autoprefixer": "latest",
     "eslint": "latest",
     "eslint-config-next": "^16.0.1",
     "postcss": "latest",
     "sass": "^1.69.5",
-    "tailwindcss": "latest"
+    "tailwindcss": "latest",
+    "wrangler": "^3.96.0",
+    "vercel": "latest"
   }
 }
