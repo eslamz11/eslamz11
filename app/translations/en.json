@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "experience": "EXPERIENCE",
+    "education": "EDUCATION",
+    "projects": "PROJECTS",
+    "blogs": "BLOGS",
+    "contact": "CONTACT"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "description": "Professional Web Developer",
+    "downloadCV": "Download CV",
+    "contactMe": "Contact me",
+    "availableForWork": "Available for Work"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Get to know me better"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "If you have any questions or concerns, please don't hesitate to contact me. I am open to any work opportunities that align with my skills and interests.",
+    "name": "Your Name",
+    "email": "Your Email",
+    "phone": "Your Phone",
+    "phoneOptional": "(Optional)",
+    "message": "Your Message",
+    "send": "Send Message",
+    "sending": "Sending Message...",
+    "success": "Your message has been sent successfully!",
+    "error": "An error occurred, please try again"
+  },
+  "projects": {
+    "title": "Projects",
+    "viewAll": "View All Projects",
+    "viewDetails": "View Details",
+    "technologies": "Technologies",
+    "backToHome": "Back to Home",
+    "allProjects": "All Projects",
+    "noProjects": "No projects available",
+    "exploreMore": "Explore More"
+  },
+  "blogs": {
+    "title": "Blogs",
+    "readMore": "Read More",
+    "viewAll": "View All Articles",
+    "backToHome": "Back to Home",
+    "allBlogs": "All Blogs",
+    "noBlogs": "No blogs available",
+    "published": "Published on",
+    "author": "Author"
+  },
+  "footer": {
+    "rights": "All Rights Reserved",
+    "builtWith": "Built with",
+    "followMe": "Follow Me"
+  },
+  "common": {
+    "loading": "Loading...",
+    "readMore": "Read More",
+    "viewMore": "View More",
+    "backToHome": "Back to Home"
+  },
+  "whatsapp": {
+    "tooltip": "Chat with us on WhatsApp!",
+    "chatWithUs": "Chat with us",
+    "onlineNow": "We're online now",
+    "description": "Have a question? Contact us directly via WhatsApp and we'll respond as soon as possible!",
+    "startChat": "Start Chat"
+  }
+}
+
