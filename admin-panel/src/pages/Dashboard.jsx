@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FiUser, FiBriefcase, FiCode, FiTrendingUp, FiBook, FiFileText, FiArrowUp, FiLayout, FiActivity, FiMail } from 'react-icons/fi';
+import { FiUser, FiBriefcase, FiCode, FiTrendingUp, FiBook, FiArrowUp, FiLayout, FiActivity, FiMail } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getStatistics } from '../services/firestoreService';
@@ -10,7 +10,6 @@ const Dashboard = () => {
     skills: 0,
     education: 0,
     experience: 0,
-    blogs: 0,
     messages: 0
   });
   const [loading, setLoading] = useState(true);
@@ -69,14 +68,6 @@ const Dashboard = () => {
       gradient: 'from-orange-500 to-yellow-500',
       bgGradient: 'from-orange-50 to-yellow-50',
       link: '/education'
-    },
-    {
-      title: 'Blogs',
-      value: stats.blogs,
-      icon: FiFileText,
-      gradient: 'from-pink-500 to-rose-500',
-      bgGradient: 'from-pink-50 to-rose-50',
-      link: '/blogs'
     },
     {
       title: 'Messages',
@@ -155,7 +146,7 @@ const Dashboard = () => {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {statsCards.map((stat, index) => (
           <Link key={index} to={stat.link}>
             <div className={`group relative bg-gradient-to-br ${stat.bgGradient} rounded-2xl p-6 border-2 border-transparent hover:border-violet-500 transition-all duration-300 cursor-pointer overflow-hidden`}>
@@ -216,8 +207,8 @@ const Dashboard = () => {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center p-4 bg-slate-50 rounded-xl">
-            <p className="text-2xl font-bold text-slate-900">{stats.projects + stats.blogs}</p>
-            <p className="text-sm text-slate-600">Total Content</p>
+            <p className="text-2xl font-bold text-slate-900">{stats.projects}</p>
+            <p className="text-sm text-slate-600">Total Projects</p>
           </div>
           <div className="text-center p-4 bg-slate-50 rounded-xl">
             <p className="text-2xl font-bold text-slate-900">{stats.skills}</p>

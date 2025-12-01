@@ -527,82 +527,6 @@ export const deleteExperience = async (docId) => {
   }
 };
 
-// ==================== Blogs ====================
-
-/**
- * جلب جميع المدونات
- */
-export const getAllBlogs = async () => {
-  try {
-    const blogsRef = collection(db, 'blogs');
-    const q = query(blogsRef, orderBy('published_at', 'desc'));
-    const querySnapshot = await getDocs(q);
-    
-    const blogs = [];
-    querySnapshot.forEach((doc) => {
-      blogs.push({ docId: doc.id, ...doc.data() });
-    });
-    
-    return { success: true, data: blogs };
-  } catch (error) {
-    console.error('Error getting blogs:', error);
-    return { success: false, error: error.message };
-  }
-};
-
-/**
- * إضافة مدونة جديدة
- */
-export const addBlog = async (blogData) => {
-  try {
-    const blogRef = doc(collection(db, 'blogs'));
-    
-    await setDoc(blogRef, {
-      ...blogData,
-      published_at: blogData.published_at || new Date().toISOString(),
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp()
-    });
-    
-    return { success: true, message: 'تم إضافة المدونة بنجاح', id: blogRef.id };
-  } catch (error) {
-    console.error('Error adding blog:', error);
-    return { success: false, error: error.message };
-  }
-};
-
-/**
- * تحديث مدونة
- */
-export const updateBlog = async (blogId, blogData) => {
-  try {
-    const docRef = doc(db, 'blogs', blogId);
-    await updateDoc(docRef, {
-      ...blogData,
-      updatedAt: serverTimestamp()
-    });
-    
-    return { success: true, message: 'تم تحديث المدونة بنجاح' };
-  } catch (error) {
-    console.error('Error updating blog:', error);
-    return { success: false, error: error.message };
-  }
-};
-
-/**
- * حذف مدونة
- */
-export const deleteBlog = async (blogId) => {
-  try {
-    const docRef = doc(db, 'blogs', blogId);
-    await deleteDoc(docRef);
-    
-    return { success: true, message: 'تم حذف المدونة بنجاح' };
-  } catch (error) {
-    console.error('Error deleting blog:', error);
-    return { success: false, error: error.message };
-  }
-};
 
 // ==================== Messages ====================
 
@@ -688,7 +612,6 @@ export const getStatistics = async () => {
     const skillsResult = await getAllSkills();
     const educationResult = await getAllEducation();
     const experienceResult = await getAllExperience();
-    const blogsResult = await getAllBlogs();
     const messagesResult = await getAllMessages();
     
     return {
@@ -698,7 +621,6 @@ export const getStatistics = async () => {
         skills: skillsResult.data?.length || 0,
         education: educationResult.data?.length || 0,
         experience: experienceResult.data?.length || 0,
-        blogs: blogsResult.data?.length || 0,
         messages: messagesResult.data?.length || 0
       }
     };
@@ -726,10 +648,6 @@ export default {
   addExperience,
   updateExperience,
   deleteExperience,
-  getAllBlogs,
-  addBlog,
-  updateBlog,
-  deleteBlog,
   getAllMessages,
   markMessageAsRead,
   deleteMessage,

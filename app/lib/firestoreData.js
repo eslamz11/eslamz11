@@ -226,87 +226,6 @@ export async function getAllEducation() {
   }
 }
 
-/**
- * جلب المدونات
- */
-export async function getAllBlogs() {
-  try {
-    const blogsRef = collection(db, 'blogs');
-    const q = query(blogsRef, orderBy('order', 'asc'));
-    const querySnapshot = await getDocs(q);
-    
-    const blogs = [];
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      blogs.push({ 
-        id: doc.id, 
-        ...data,
-        order: data.order || 0,
-        featured: data.featured !== undefined ? data.featured : true,
-        type: data.type || 'regular'
-      });
-    });
-    
-    return blogs;
-  } catch (error) {
-    console.error('Error fetching blogs from Firestore:', error);
-    return [];
-  }
-}
-
-/**
- * جلب المدونات المميزة للصفحة الرئيسية
- */
-export async function getFeaturedBlogs(limitCount = 6) {
-  try {
-    const blogsRef = collection(db, 'blogs');
-    // Get all blogs and filter/sort in memory to avoid composite index requirement
-    const querySnapshot = await getDocs(blogsRef);
-    
-    const blogs = [];
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      blogs.push({ 
-        id: doc.id, 
-        ...data,
-        order: data.order || 0,
-        featured: data.featured !== undefined ? data.featured : true,
-        type: data.type || 'regular'
-      });
-    });
-    
-    // Filter featured blogs, sort by order, and limit in memory
-    const featuredBlogs = blogs
-      .filter(b => b.featured === true)
-      .sort((a, b) => a.order - b.order)
-      .slice(0, limitCount);
-    
-    return featuredBlogs;
-  } catch (error) {
-    console.error('Error fetching featured blogs from Firestore:', error);
-    return [];
-  }
-}
-
-/**
- * جلب مدونة واحدة حسب ID
- */
-export async function getBlogById(id) {
-  try {
-    const docRef = doc(db, 'blogs', id);
-    const docSnap = await getDoc(docRef);
-    
-    if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() };
-    } else {
-      console.warn('No blog found with ID:', id);
-      return null;
-    }
-  } catch (error) {
-    console.error('Error fetching blog by ID:', error);
-    return null;
-  }
-}
 
 export default {
   getPersonalData,
@@ -314,8 +233,6 @@ export default {
   getProjectById,
   getAllSkills,
   getAllExperience,
-  getAllEducation,
-  getAllBlogs,
-  getBlogById
+  getAllEducation
 };
 

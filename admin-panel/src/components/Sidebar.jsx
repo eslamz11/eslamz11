@@ -7,7 +7,6 @@ import {
   FiLogOut,
   FiCode,
   FiBook,
-  FiFileText,
   FiTrendingUp,
   FiLayout,
   FiMail
@@ -48,7 +47,6 @@ const Sidebar = () => {
     { path: '/skills', icon: FiCode, label: 'Skills', description: 'Technical abilities' },
     { path: '/experience', icon: FiBriefcase, label: 'Experience', description: 'Work history' },
     { path: '/education', icon: FiBook, label: 'Education', description: 'Academic background' },
-    { path: '/blogs', icon: FiFileText, label: 'Blogs', description: 'Articles & posts' },
   ];
 
   return (

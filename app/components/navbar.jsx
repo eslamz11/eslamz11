@@ -8,7 +8,6 @@ import {
   HiX,
   HiBriefcase,
   HiAcademicCap,
-  HiBookOpen,
   HiMail
 } from 'react-icons/hi';
 import { FaCode as FaCodeAlt } from 'react-icons/fa';
@@ -40,13 +39,16 @@ function Navbar() {
           // Update scrolled state for styling
           setIsScrolled(currentScrollY > 20);
 
-          // Show navbar only when at top of page
+          // Hide navbar when scrolling down, show when scrolling up
           if (currentScrollY < 10) {
+            // Always show at top
             setIsNavbarVisible(true);
-          }
-          // Hide navbar when scrolled down
-          else {
+          } else if (currentScrollY > lastScrollY) {
+            // Scrolling down - hide navbar
             setIsNavbarVisible(false);
+          } else if (currentScrollY < lastScrollY) {
+            // Scrolling up - show navbar
+            setIsNavbarVisible(true);
           }
 
           setLastScrollY(currentScrollY);
@@ -63,7 +65,7 @@ function Navbar() {
         cancelAnimationFrame(rafId);
       }
     };
-  }, []);
+  }, [lastScrollY]);
 
   useEffect(() => {
     // Close menu when route changes
@@ -94,7 +96,6 @@ function Navbar() {
     { name: t('nav.experience'), href: '/#experience', icon: HiBriefcase },
     { name: t('nav.education'), href: '/#education', icon: HiAcademicCap },
     { name: t('nav.projects'), href: '/projects', icon: FaCodeAlt },
-    { name: t('nav.blogs'), href: '/blog', icon: HiBookOpen },
     { name: t('nav.contact'), href: '/#contact', icon: HiMail },
   ];
 
@@ -106,7 +107,7 @@ function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? theme === 'dark'
             ? 'bg-[#0d1224]/98 backdrop-blur-2xl border-b border-[#1b2c68a0] shadow-2xl shadow-[#16f2b3]/10'
             : 'bg-white/95 backdrop-blur-2xl border-b border-gray-200 shadow-xl'
@@ -270,10 +271,10 @@ function Navbar() {
             ? 'translate-x-0'
             : language === 'ar' ? '-translate-x-full' : 'translate-x-full'
           }`}>
-          {/* Animated Background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-violet-600 rounded-full blur-[120px] opacity-20"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-pink-600 rounded-full blur-[120px] opacity-20"></div>
+          {/* Simple Background */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-violet-600 rounded-full"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-pink-600 rounded-full"></div>
           </div>
 
           {/* Menu Header */}

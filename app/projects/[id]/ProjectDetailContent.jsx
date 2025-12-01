@@ -47,8 +47,7 @@ function ImageModal({ imageUrl, onClose, images, currentIndex, onNavigate, image
       {/* Image Counter */}
       {hasMultipleImages && (
         <div className="absolute top-6 left-6 z-50">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-lg opacity-50"></div>
+            <div className="relative">
             <div className="relative bg-black/70 backdrop-blur-md text-white px-5 py-2.5 rounded-full font-bold shadow-xl border border-white/10">
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 {currentIndex + 1}
@@ -93,7 +92,7 @@ function ImageModal({ imageUrl, onClose, images, currentIndex, onNavigate, image
         {/* Image Container */}
         <div className="flex-1 flex items-center justify-center mb-4">
           <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-2xl opacity-20 blur-xl"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-2xl opacity-20"></div>
             <div className="relative">
               <Image
                 src={imageUrl}
@@ -240,8 +239,8 @@ export default function ProjectDetailContent({ project }) {
       <div className="relative pt-28 pb-16 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute w-[500px] h-[500px] bg-violet-600 rounded-full blur-[150px] opacity-10 top-0 left-1/4"></div>
-          <div className="absolute w-[500px] h-[500px] bg-pink-600 rounded-full blur-[150px] opacity-10 bottom-0 right-1/4"></div>
+          <div className="absolute w-96 h-96 bg-violet-600 rounded-full opacity-5 top-0 left-1/4"></div>
+          <div className="absolute w-96 h-96 bg-pink-600 rounded-full opacity-5 bottom-0 right-1/4"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">

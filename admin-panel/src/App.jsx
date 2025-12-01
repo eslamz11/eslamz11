@@ -11,7 +11,6 @@ import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import Experience from './pages/Experience';
 import Education from './pages/Education';
-import Blogs from './pages/Blogs';
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -40,7 +39,6 @@ function AppRoutes() {
         <Route path="skills" element={<Skills />} />
         <Route path="experience" element={<Experience />} />
         <Route path="education" element={<Education />} />
-        <Route path="blogs" element={<Blogs />} />
       </Route>
 
       {/* Catch all */}
