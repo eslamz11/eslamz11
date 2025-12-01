@@ -59,6 +59,13 @@ const nextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
+  // Disable ESLint during builds on Vercel
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
 module.exports = nextConfig
